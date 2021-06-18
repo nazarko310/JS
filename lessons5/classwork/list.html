@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Сторінка товарів</title>
+</head>
+<body>
+<div class="iPhone12">
+
+</div>
+<div class="iPhone11">
+
+</div>
+<form id="delete" action="index.html">
+    <input type="submit" value="Видалити" name="delete">
+</form>
+<script>
+    let productObj = localStorage.getItem('iPhone12')
+    let productJson = JSON.parse(productObj);
+    let productObj1 = localStorage.getItem('iPhone11')
+    let productJson1 = JSON.parse(productObj1);
+    let div = document.getElementsByClassName('iPhone12');
+    let div1 = document.getElementsByClassName('iPhone11');
+    for (const divElement of div) {
+        divElement.innerHTML = `
+        <img src = '${productJson.imgOfiPhone12}' alt="" width="10%">
+        <div>
+        <p>${productJson.nameOfiPhone12}</p>
+        <p>К-сть, яку ви взяли: ${productJson.countOfiPhone12}</p>
+        <p>Сума: ${productJson.priceOfiPhone12 * productJson.countOfiPhone12}</p>
+        <form id ="deleteiPhone12">
+        <button id ="iPhone12">Видалити товар</button>
+        </form>
+        </div>`
+    }
+    for (const div1Element of div1) {
+        div1Element.innerHTML = `
+        <img src = '${productJson1.imgOfiPhone11}' alt="" width="10%">
+        <div>
+        <p>${productJson1.nameOfiPhone11}</p>
+        <p>К-сть, яку ви взяли: ${productJson1.countOfiPhone11}</p>
+        <p>Сума: ${productJson1.priceOfiPhone11 * productJson1.countOfiPhone11}</p>
+        <form id ="deleteiPhone11">
+        <button id ="iPhone11">Видалити товар</button>
+        </form>
+
+        </div>
+        `
+    }
+
+    let btn = document.forms.delete;
+    btn.addEventListener("submit", (e) => {
+        return localStorage.clear();
+    })
+
+    let deleteiPhone12 = document.forms.deleteiPhone12;
+    let deleteiPhone11 = document.forms.deleteiPhone11;
+
+    const buttoniPhone12 = deleteiPhone12.iPhone12;
+    const buttoniPhone11 = deleteiPhone11.iPhone11;
+    buttoniPhone12.onclick = (e) => {
+        e.preventDefault();
+        return localStorage.removeItem('iPhone12');
+    }
+    buttoniPhone11.onclick = (e) => {
+        e.preventDefault();
+        return localStorage.removeItem('iPhone11');
+    }
+
+</script>
+</body>
+</html>
