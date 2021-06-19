@@ -61,12 +61,12 @@ let users = [{
 }];
 
 
-// for (const user of users) {
-//     let divWithUsers = document.createElement('div');
-//     divWithUsers.innerText = `${user.name} ${user.age}  ${user.status} ${user.address.city} ${user.address.country}
-//     ${user.address.street} ${user.address.houseNumber}`;
-//     document.body.append(divWithUsers)
-// }
+for (const user of users) {
+    let divWithUsers = document.createElement('div');
+    divWithUsers.innerText = `${user.name} ${user.age}  ${user.status} ${user.address.city} ${user.address.country}
+    ${user.address.street} ${user.address.houseNumber}`;
+    document.body.append(divWithUsers)
+}
 
 
 for (const user of users) {
@@ -142,48 +142,16 @@ document.body.append(mainTitle);
 let wrap = document.createElement('div');
 wrap.setAttribute('id', 'wrap');
 document.body.append(wrap);
-let rule;
-for (let i = 0; i < 8; i++) {
-    rule = document.createElement('div');
-    rule.classList.add('rules', `rule${i + 1}`);
+
+for (const ruleElement of rules) {
+    let rule = document.createElement('div');
+    rule.innerHTML = `<h2>${ruleElement.title}</h2> <p>${ruleElement.body}</p>`
     wrap.append(rule)
 }
 
-let rule1 = document.getElementsByClassName('rule1');
-let rule2 = document.getElementsByClassName('rule2');
-let rule3 = document.getElementsByClassName('rule3');
-let rule4 = document.getElementsByClassName('rule4');
-let rule5 = document.getElementsByClassName('rule5');
-let rule6 = document.getElementsByClassName('rule6');
-let rule7 = document.getElementsByClassName('rule7');
-let rule8 = document.getElementsByClassName('rule8');
+let divArray = document.querySelectorAll('#wrap div');
+for (let i = 0; i < divArray.length; i++) {
+    divArray[i].classList.add('rules', `rule${i + 1}`);
 
-for (let i = 0; i < rule1.length; i++) {
-    rule1[i].innerHTML = `
-                            <h2>Первое правило Бойцовского клуба.</h2> 
-                            <p>Никому не рассказывать о Бойцовском клубе.</p>`
-    rule2[i].innerHTML = `
-                            <h2>Второе правило Бойцовского клуба.</h2> 
-                            <p>Никому не рассказывать о Бойцовском клубе.</p>`
-    rule3[i].innerHTML = `
-                            <h2>Третье правило Бойцовского клуба.</h2> 
-                            <p>В схватке участвуют только двое.</p>`
-    rule4[i].innerHTML = `
-                            <h2>Четвертое правило Бойцовского клуба.</h2> 
-                            <p>Не более одного поединка за один раз.</p>`
-    rule5[i].innerHTML = `
-                            <h2>Пятое правило Бойцовского клуба.</h2> 
-                            <p>Бойцы сражаются без обуви и голые по пояс.</p>`
-    rule6[i].innerHTML = `
-                            <h2>Шестое правило Бойцовского клуба.</h2> 
-                            <p>Поединок продолжается столько, сколько потребуется.</p>`
-    rule7[i].innerHTML = `
-                            <h2>Седьмое правило Бойцовского клуба.</h2> 
-                            <p>Если противник потерял сознание или делает вид, что потерял, или говорит «Хватит» — поединок
-                            окончен.</p>`
-    rule8[i].innerHTML = `
-                            <h2>Восьмое и последнее правило Бойцовского клуба.</h2> 
-                            <p>Новичок обязан принять бой.</p>`
 }
-
 
